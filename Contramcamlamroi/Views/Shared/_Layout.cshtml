@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/script.js"></script>
+    <style>
+        #animation-top5 {
+            color: white;
+            text-shadow: 1px 1px 2px gray, 0 0 25px red, 0 0 5px red;
+        }
+
+        /*.div-footer {
+            position: fixed;
+            text-align: center;
+            bottom: 0;
+            left: 0;
+            padding-top: 15px;
+            height: 50px;
+            width: 100%;
+            background-color: forestgreen;
+        }*/
+
+        li.format-hello {
+            padding-top: 15px;
+            color: white;
+        }
+
+        .navbar-inverse {
+            background-color: green;
+        }
+
+            .navbar-inverse .navbar-nav > li > a {
+                color: black;
+                font-size: 14px;
+            }
+
+        form {
+            display: -webkit-inline-box;
+        }
+
+        input[type=text] {
+            width: 200px;
+            -webkit-transition: width 0.4s ease-in-out;
+            transition: width 0.4s ease-in-out;
+        }
+
+        /* When the input field gets focus, change its width to 100% */
+        .search-product-price input[type=text]:focus {
+            width: 400px;
+            height: 35px;
+        }
+
+        input, select, textarea {
+            max-width: 800px;
+            height: 35px;
+            background: #fff;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            -webkit-transition: all 0.5s;
+            transition: all 0.5s;
+            border: solid 1px black;
+        }
+
+            input[type="text" i] {
+                padding: 1px 2px;
+                margin-top: 10px;
+                border-radius: 5px;
+                border: 2px solid #73AD21;
+            }
+
+        td, th {
+            padding-right: 10px;
+        }
+
+        input[type="submit"] {
+            -webkit-appearance: button;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .col-md-10 {
+            width: 100%;
+            @* background-image: url('../../Content/images/1900851.png');
+            *@ height:1050px;
+        }
+
+        .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+            float: left;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @*@Html.ActionLink("VEGEFOODS", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @*<li>@Html.ActionLink("Trang Chủ", "Index", "Product")</li>*@
+                    <li>@Html.ActionLink("Kênh người bán", "Index_Admin", "Product")</li> 
+                    <li>@Html.ActionLink("Liên hệ ", "Contact", "Home")</li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        @*<span>
+                <a href="/ShoppingCart/ShowCart">
+                    <img src="@Url.Content("~/Content/images/cart.png")" style="height:30px;width:30px;margin-top:10px;" />
+                </a>
+            </span>
+            @Html.Action("BagCart", "ShoppingCart")*@
+                    </li>
+                    
+                    <li><a href="/Home/Contact"><span class="glyphicon glyphicon-envelope"></span> Hỗ Trợ </a></li>
+                    <li><a href="/LoginUser/RegisterUser"><span class="glyphicon glyphicon-user"></span> Đăng Ký</a></li>
+                    <li><a href="/LoginUser/Index"><span class="glyphicon glyphicon-user"></span> Đăng Nhập </a></li>
+                    <li><a href="@Url.Action("LogOutUser","LoginUser")"> LogOut</a></li>
+                    <li class="format-hello">
+                        @if (Session["NameUser"] == null)
+                        {
+                            <span> HeLLo</span>
+                        }
+
+                        else
+                        {
+                            <span> <text> HeLLo </text> @Session["NameUser"]</span>
+                        }
+                    </li>
+
+                </ul>
+            </div>
+            <div >
+                @Html.ActionLink("VEGEFOODS", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <span class="search-product-price" style="text-align: center">
+                    @using (Html.BeginForm("Search", "Product"))
+                    {
+                        <input type="text" name="_name" placeholder="Bạn tìm cấy chi rứa?...">
+                        <input type="submit" value="Tìm" style="background-color: green; color: white; border-color: white; border-style: solid; border-width: 1px; border-radius: 3px; background-color: lawngreen; -webkit-box-shadow: 0px 1px 4px rgb(0 0 0 / 20%); box-shadow: 0px 1px 4px rgb(0 0 0 / 20%); " />
+                    }
+                </span>
+                <span class="navbar navbar-right" style="">
+                    <a href="/ShoppingCart/ShowCart">
+                        <img src="@Url.Content("~/Content/images/cart.png")" style="height:30px;width:30px;margin-top:10px;" />
+                    </a>
+                    @Html.Action("BagCart", "ShoppingCart")
+                </span>
+                <div>
+                    @{ Html.RenderAction("CategoryPartial", "Categories");}
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid body-content">
+        <div style="text-align: center">
+            <ul style="text-decoration:none; margin-top:100px; list-style-type:none; padding: 50px;">
+                <li><a href="/OrderDetail/GroupByTop5" style="color:black;" id="animation-top5">Top 5 sản phẩm bán chạy nhất</a></li>
+            </ul>
+            <div class="col-md" id="div-content">
+
+                @RenderBody()
+
+            </div>
+        </div>
+    </div>
+
+    @*@ <div class="div-footer">
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </div>*@
+    @*@<footer style=" background-color: forestgreen;">
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>*@
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

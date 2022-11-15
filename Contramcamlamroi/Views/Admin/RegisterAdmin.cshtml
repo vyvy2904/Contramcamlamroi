@@ -1,0 +1,58 @@
+﻿@model Contramcamlamroi.Models.AdminUser
+
+@{
+    ViewBag.Title = "RegisterAdmin";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<h1 style="padding-left:100px;">ĐĂNG KÍ CHO NGƯỜI BÁN </h1>
+
+
+<style>
+    .field-validation-error {
+        color: red;
+    }
+</style>
+<div style="padding-left:100px;">
+@using (Html.BeginForm("RegisterAdmin", "Admin", FormMethod.Post, new
+{
+    enctype = "multipart/form-data"
+}))
+{
+    @Html.AntiForgeryToken()
+    
+    <p>@Html.LabelFor(model => model.ID)</p>
+    <p>@Html.EditorFor(model => model.ID)</p>
+    <p>@Html.ValidationMessageFor(model => model.ID)</p>
+
+    if (ViewBag.ErrorRegister != null)
+    {
+        <p>@ViewBag.ErrorRegister</p>
+    }
+
+    <p>@Html.LabelFor(model => model.NameUser)</p>
+    <p>@Html.EditorFor(model => model.NameUser)</p>
+    <p>@Html.ValidationMessageFor(model => model.NameUser)</p>
+
+    <p>@Html.LabelFor(model => model.RoleUser)</p>
+    <p>@Html.EditorFor(model => model.RoleUser)</p>
+    <p>@Html.ValidationMessageFor(model => model.RoleUser)</p>
+    <br />
+
+    
+    <p>@Html.LabelFor(model => model.PasswordUser)</p>
+    <p>@Html.EditorFor(model => model.PasswordUser)</p>
+    <p>@Html.ValidationMessageFor(model => model.PasswordUser)</p>
+    <br />
+
+    <p>@Html.LabelFor(model => model.ConfirmPass)</p>
+    <p>@Html.EditorFor(model => model.ConfirmPass)</p>
+    <p>@Html.ValidationMessageFor(model => model.ConfirmPass)</p>
+
+    <input type="submit" value="Đăng Ký" />
+}
+</div>
+
+
+

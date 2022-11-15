@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Contramcamlamroi.Models.ViewModel>
+
+@{
+    ViewBag.Title = "GroupByTop5";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2> DANH SÁCH SẢN PHẨM BÁN CHẠY NHẤT </h2>
+<table  class="table-bordered" style="width:800px;">
+    <tr>
+        <th> Tên sản phẩm </th>
+        <th> Hình sản phẩm </th>
+        <th> Gía sản phẩm </th>
+        <th> Tổng số lượng</th>
+       
+    </tr>
+    @foreach(var i in Model)
+     {
+        <tr>
+            @*<td> @Html.DisplayFor(model => i.IDPro)</td>*@
+            <td> @Html.DisplayFor(model => i.NamePro)</td>
+            <td><img src="@Url.Content(i.ImgPro)" height="150" width="150"/></td>
+            <td style="height">@Html.DisplayFor(model => i.pricePro) </td> 
+            <td>@Html.DisplayFor(model => i.Sum_Quantity)</td>
+            <td><a href="/ShoppingCart/AddToCart/@i.IDPro" class="btn btn-default" > Buy </a></td>
+        </tr>
+             
+     }
+
+</table>
+

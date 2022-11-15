@@ -1,0 +1,39 @@
+﻿@model Contramcamlamroi.Models.Category
+@{ 
+    Layout = "~/Views/Shared/ViewPage1.cshtml";
+}
+<h1 style="padding-left:50px;"> XÓA SẢN PHẨM </h1>
+<div>
+    <h3 style="padding-left:50px;"> Bạn chắc chắn muốn xóa sản phẩm này ? </h3>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IDCate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDCate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NameCate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameCate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions " style=" margin-left: 90px; margin-top: 20px;">
+            <input type="submit" value="Delete" class="btn btn-default" style=" background-color: #5cb85c; color: #337ab7"/> 
+           
+        </div>
+        <div  class="btn btn-default" style="background-color: #5cb85c; color: #337ab7; margin-left: 90px; margin-top: 10px; ">
+            @Html.ActionLink("Quay lại trang trước", "Index")
+        </div>
+    }
+</div>

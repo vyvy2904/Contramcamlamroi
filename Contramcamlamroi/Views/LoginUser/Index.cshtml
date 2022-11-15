@@ -1,0 +1,53 @@
+﻿@model Contramcamlamroi.Models.AdminUser
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<style>
+    .login-text h2
+    {
+        font-size:50px;
+    }
+    .field-validation-error
+    {
+        color:red;
+    }
+</style>
+
+<div style="margin-top:10%;margin-left: 40%; border-radius: 15px; border: 2px solid #73AD21; width: 30%;height:300px; ">
+    <div class="login-text">
+        <h2>Đăng Nhập</h2>
+    </div>
+    @using (Html.BeginForm("LoginAcount", "LoginUser"))
+    {
+        @Html.AntiForgeryToken()
+        <table style="margin-top:30px;padding:30px;font-size:20px;">
+            <tr>
+                <td>@Html.LabelFor(model => model.NameUser) </td>
+                <td>@Html.TextBoxFor(model => model.NameUser, new {})</td>
+                <td>
+                    @Html.ValidationMessageFor(model => model.NameUser)
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>@Html.LabelFor(model => model.PasswordUser)</td>
+                <td>@Html.EditorFor(model => model.PasswordUser)</td>
+                <td>
+                @Html.ValidationMessageFor(model => model.PasswordUser)
+                </td>
+
+                @if (ViewBag.ErrorInfo == null)
+                {
+                    <p>@ViewBag.ErrorInfo</p>
+                }
+            </tr>
+            <tr>
+                <td> </td>
+                <td><input type="submit" value="Đăng Nhập" style="box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); background-color: #4CAF50; /* Green */ border: none; color: white;; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; -webkit-transition-duration: 0.4s; /* Safari */ transition-duration: 0.4s; "/></td>
+            </tr>
+        </table>
+    }
+    </div>

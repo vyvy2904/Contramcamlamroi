@@ -1,0 +1,81 @@
+﻿@model Contramcamlamroi.Models.Product
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/ViewPage1.cshtml";
+}
+
+<h1  style="
+    margin-left: 60px;"> XÓA SẢN PHẨM </h1>
+
+<h3 style="
+    margin-left: 60px;"> Bạn chắc chắn muốn xóa sản phẩm này ?</h3>
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @*@Html.DisplayNameFor(model => model.NamePro)*@
+            <p> Tên sản phẩm  </p>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamePro)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.DecriptionPro)*@
+            <p> Mô tả </p>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DecriptionPro)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+            <p> Giá </p>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.ImagePro)*@
+            <p> Hình </p>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImagePro)
+            @*<img src="@Url.Content(Model.ImagePro)" width="200" height="200" />*@
+        </dd>
+        <dd>
+            <img src="@Url.Content(Model.ImagePro)" width="200" height="200" />
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.Quantity)*@
+            <p> Loại sản phẩm  </p>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameCate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions ">
+            <input type="submit" value="Xóa" class="btn btn-default" style="background-color: #5cb85c; border-color: #4cae4c; color: #337ab7; margin-left: 30px; "/> 
+         @*@Html.ActionLink("Quay lại trang trước ", "Index_Admin")*@
+          
+        </div>
+        <div class="btn btn-success"style="margin-left: 30px;">
+            @Html.ActionLink("Quay lại trang trước ", "Index_Admin")
+        </div>
+    }
+</div>

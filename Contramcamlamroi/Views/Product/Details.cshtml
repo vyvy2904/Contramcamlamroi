@@ -1,0 +1,77 @@
+﻿@model Contramcamlamroi.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/ViewPage1.cshtml";
+}
+
+<h2 style="padding-left:60px;">CHI TIẾT</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @*@Html.DisplayNameFor(model => model.NamePro)*@
+            <p> Tên sản phẩm </p>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamePro)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.DecriptionPro)*@
+            <p> Mô tả </p>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DecriptionPro)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.Category)*@
+            <p> Mã sản phẩm </p>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.Price)*@
+            <p> Giá</p>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.ImagePro)*@
+            <p> Hình  </p>
+        </dt>
+
+        <dd>
+           @Html.DisplayFor(model => model.ImagePro)
+            @*<img src="@Url.Content(Model.ImagePro)" width="200" height="200" />*@
+        </dd>
+        <dd>
+            <img src="@Url.Content(Model.ImagePro)" width="200" height="200" />
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.Quantity)*@
+            <p> Loại sản phẩm  </p>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameCate)
+        </dd>
+
+    </dl>
+</div>
+<p class="btn btn-success"style="margin-left:30px;">
+    
+    @Html.ActionLink("Quay lại trang trước", "Index_Admin")
+</p>

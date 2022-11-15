@@ -1,0 +1,112 @@
+﻿@*@model IEnumerable<Contramcamlamroi.Models.Product>*@
+@using Contramcamlamroi.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<Product>
+@{
+    ViewBag.Title = "Index";
+
+}
+<style>
+    #div-ds {
+        text-align: center;
+        background-color: forestgreen;
+        height: 40px;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .MenuPage li {
+        display: inline;
+    }
+
+    .search {
+        padding-bottom: 8px;
+        padding-top: 8px;
+        margin-left: 44px;
+    }
+
+   @* .search {
+        width: 100%;
+        position: relative;
+        display: flex;
+    }
+
+    .searchTerm {
+        width: 100%;
+        border: 3px solid #00B4CC;
+        border-right: none;
+        padding: 5px;
+        height: 20px;
+        border-radius: 5px 0 0 5px;
+        outline: none;
+        color: #9DBFAF;
+    }
+
+        .searchTerm:focus {
+            color: #00B4CC;
+        }
+
+    .searchButton {
+        width: 100px;
+        height: 36px;
+        border: 1px solid #00B4CC;
+        background: #00B4CC;
+        text-align: center;
+        color: #fff;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        font-size: 20px;
+    }
+
+    .wrap {
+        width: 30%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }*@
+</style>
+<div id="div-ds"><h2>Danh Sách Sản Phẩm</h2></div>
+
+@using (Html.BeginForm("SearchOption", "Product"))
+{
+        <div class="search">
+            <text> TỪ </text><input type="number" name="min" />
+            <text> ĐẾN </text><input type="number" name="max" />
+            <input type="submit" value="Search" />
+        </div>
+        @*@<div class="col-md-5">
+            <form action="" class="search" method="post">
+                <input type="text" class="searchTerm" placeholder="Bạn muốn tìm gì?">
+                <button type="submit" class="searchButton">
+                    Submit
+                </button>
+            </form>
+        </div>*@
+    
+      <div class="container">
+
+            @foreach (var pro in Model)
+            {
+                <div class="col-sm-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card-pro">
+                        @*<p> @Html.DisplayFor(model => pro.ProductID)</p>*@
+                       <a href="/Product/ProductList"><br /><img src="@Url.Content(pro.ImagePro)" height="150" width="150" /></a> 
+                       <a href="/Product/ProductList/ @pro.ProductID"><p>@Html.DisplayFor(model => pro.NamePro)</p></a>
+                        <p>@Html.DisplayFor(model => pro.Price)</p>
+                        
+                        <a href="/ShoppingCart/AddToCart/ @pro.ProductID" class="btn btn-defaul">Buy</a>
+                    </div>
+
+                </div>
+            }
+
+        </div>
+
+      
+    }
+
+    Trang@(Model.PageCount<Model.PageNumber? 0 : Model.PageNumber)/@Model.PageCount
+    <div class="MenuPage">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+    </div>
+
