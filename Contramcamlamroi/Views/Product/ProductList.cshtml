@@ -8,7 +8,7 @@
 
 
 <div class="containt" style="margin-top:50px;margin-left:100px">
-    <div id="div-top" >
+    <div id="div-top"style="font-size:20px;" >
         
             @Html.ActionLink("Trang chủ", "Index")  
             @*@Html.ActionLink("Rau củ", "GroupByTop5", " OrderDetail")*@
@@ -19,13 +19,13 @@
         
         <img src="@Url.Content(Model.ImagePro)" style="width:400px;" />
     </div>
-    <div class="col-md-4" style="margin-top:-10px;font-size:30px;font-family:cursive">
+    <div class="col-md-4" style="margin-top:-10px;font-size:30px;">
         @*<p> @Html.DisplayFor(model => model.NamePro)</p> <br />*@
-        <p style="font-size: 30px;"> @Html.DisplayFor(model => model.NamePro)</p>
-        <p style=" color: red">  @Html.DisplayFor(model => model.Price)0 đ</p>
+        <p style="font-size: 30px; margin-left: -170px;"> @Html.DisplayFor(model => model.NamePro)</p>
+        <p style="color: red; font-family: cursive; margin-left: -170px;">  @Html.DisplayFor(model => model.Price)0 đ</p>
         <p></p>
         <p></p>
-        <p class="btn btn-success" style="margin-top:200px;">  <a href="/ShoppingCart/AddToCart/ @Model.ProductID" class="btn btn-defaul">Mua Ngay</a></p>
+        <p class="btn btn-success" style="margin-top: 200px; width: 80%; height: 60px;">  <a href="/ShoppingCart/AddToCart/ @Model.ProductID" class="btn btn-defaul" style="text-align: center; font-size: 20px;">Mua Ngay</a></p>
     </div>
    
 </div>
