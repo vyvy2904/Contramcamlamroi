@@ -41,6 +41,7 @@
 
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
+
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
@@ -48,51 +49,54 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("VEGEFOODS", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Trang Chủ", "Index", "Product")</li>
-                    <li>@Html.ActionLink("Kênh người bán", "LoginAdmin", "Admin")</li>
-                    <li>@Html.ActionLink("Liên hệ ", "Contact", "Home")</li>
-                </ul>
+             </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Mua Hàng", "Index", "Product")</li>
+                        <li>@Html.ActionLink("Sản Phẩm", "Index_Admin", "Product")</li>
+                        <li>@Html.ActionLink("Loại sản phẩm ", "Index", "Categories")</li>
+                        <li>@Html.ActionLink("Đơn Hàng ", "Index", "OrderPro")</li>
+                        <li>@Html.ActionLink("Khách Hàng ", "Index", "Customer")</li>
+                    </ul>
 
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <span>
-                            <a href="/ShoppingCart/ShowCart">
-                                <img src="@Url.Content("~/Content/images/cart.png")" style="height:30px;width:30px;margin-top:10px;" />
-                            </a>
-                        </span>
-                        @Html.Action("BagCart", "ShoppingCart")
-                    </li>
-                    <li><a href="/LoginUser/RegisterUser"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a href="/LoginUser/Index"><span class="glyphicon glyphicon-user"></span> Login</a></li>
-                    <li><a href="@Url.Action("LogOutUser","LoginUser")"> LogOut</a></li>
-                    <li class="format-hello">
-                        @if (Session["NameUser"] == null)
-                        {
-                            <span> HeLLo</span>
-                        }
+                    <ul class="nav navbar-nav navbar-right">
+                        @*<li>
+                    <span>
+                        <a href="/ShoppingCart/ShowCart">
+                            <img src="@Url.Content("~/Content/images/cart.png")" style="height:30px;width:30px;margin-top:10px;" />
+                        </a>
+                    </span>
+                    @Html.Action("BagCart", "ShoppingCart")
+                </li>
+                <li><a href="/LoginUser/RegisterUser"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="/LoginUser/Index"><span class="glyphicon glyphicon-user"></span> Login</a></li>*@
+                        <li></li>
+                        <li><a href="@Url.Action("LogOutUser","LoginUser")"> LogOut</a></li>
+                        <li class="format-hello">
+                            @if (Session["NameUser"] == null)
+                            {
+                                <span> HeLLo</span>
+                            }
 
-                        else
-                        {
-                            <span> <text> Hello </text> <a href="@Url.Action("Index_Admin","Product")">@Session["NameUser"]</a></span>
-                        }
-                    </li>
+                            else
+                            {
+                                <span> <text> Hello </text> <a href="@Url.Action("Index_Admin","Product")">@Session["NameUser"]</a></span>
+                            }
+                        </li>
 
-                </ul>
-            </div>
-            <div  style="text-align: center">
-                @using (Html.BeginForm("Search", "Product"))
-                {
-                    <input type="text" name="_name" >
-                    <input type="submit" value="Tìm" />
-                }
+                    </ul>
+                </div>
+                @*<div class="search-product-price" style="text-align: center">
+            @using (Html.BeginForm("Search", "Product"))
+            {
+                <input type="text" name="_name" placeholder="Bạn tìm cấy chi rứa?...">
+                <input type="submit" value="Tìm" style="background-color: green; color: white; border-color: white; border-style: solid; border-width: 1px; border-radius: 3px; background-color: lawngreen; -webkit-box-shadow: 0px 1px 4px rgb(0 0 0 / 20%); box-shadow: 0px 1px 4px rgb(0 0 0 / 20%); " />
+            }
 
 
-            </div>
+        </div>*@
+           
         </div>
-
     </div>
 
     <div class="row" style="margin-top:30px">
