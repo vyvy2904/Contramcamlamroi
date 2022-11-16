@@ -48,7 +48,7 @@ namespace Contramcamlamroi.Controllers
                 _order.DateOrder = DateTime.Now;
                 _order.AddressDeliverry = form["AddressDelivery"];
                 _order.IDCus = int.Parse(form["CodeCustomer"]);
-                database.OrderProes.Add(_order);
+                database.OrderPro.Add(_order);
                 foreach (var item in cart.Items)
                 {
                     OrderDetail _order_detail = new OrderDetail();

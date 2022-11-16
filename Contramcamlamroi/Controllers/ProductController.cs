@@ -9,6 +9,7 @@ using PagedList.Mvc;
 using Contramcamlamroi.Models;
 using System.Net;
 using System.Data;
+using System.Collections;
 
 namespace Contramcamlamroi.Controllers
 {
@@ -16,6 +17,8 @@ namespace Contramcamlamroi.Controllers
     {
         // GET: Product
         DBSportStoreEntities1 database = new DBSportStoreEntities1();
+      
+
         public ActionResult SearchOption(double min = double.MinValue, double max = double.MaxValue)
         {
             var list = database.Products.Where(p => (double)p.Price >= double.MinValue && (double)p.Price <= max).ToList();
@@ -51,6 +54,8 @@ namespace Contramcamlamroi.Controllers
         }
         public ActionResult Create()
         {
+            List<Category> List = database.Categories.ToList();
+            ViewBag.listCategory = new SelectList(List, "IDCate", "NameCate", "");
             Product pro = new Product();
             return View(pro);
         }
@@ -58,6 +63,7 @@ namespace Contramcamlamroi.Controllers
         [HttpPost]
         public ActionResult Create(Product pro)
         {
+            List<Category> list = database.Categories.ToList();
             try
             {
                 if (pro.UploadImage != null)
@@ -68,6 +74,7 @@ namespace Contramcamlamroi.Controllers
                     pro.ImagePro = "~/Content/images/" + filename;
                     pro.UploadImage.SaveAs(Path.Combine(Server.MapPath("~/Content/images/"), filename));
                 }
+                ViewBag.listCategory = new SelectList(list, "IDCate", "NameCate", "");
                 database.Products.Add(pro);
                 database.SaveChanges();
                 return RedirectToAction("Index_Admin");

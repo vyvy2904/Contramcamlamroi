@@ -20,7 +20,7 @@
             @*<td> @Html.DisplayFor(model => i.IDPro)</td>*@
             <td> @Html.DisplayFor(model => i.NamePro)</td>
             <td><img src="@Url.Content(i.ImgPro)" height="150" width="150"/></td>
-            <td style="height">@Html.DisplayFor(model => i.pricePro) </td> 
+            <td style="">@Html.DisplayFor(model => i.pricePro) </td> 
             <td>@Html.DisplayFor(model => i.Sum_Quantity)</td>
             <td><a href="/ShoppingCart/AddToCart/@i.IDPro" class="btn btn-default" > Buy </a></td>
         </tr>
