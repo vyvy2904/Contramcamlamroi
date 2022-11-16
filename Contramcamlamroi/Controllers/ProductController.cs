@@ -151,8 +151,12 @@ namespace Contramcamlamroi.Controllers
         }
         public ActionResult Search(string _name)
         {
-            var list = database.Products.Where(p =>p.NamePro==_name).ToList();
-            return View(list);
+            if (_name == null)
+                return View(database.Products.ToList());
+            else
+                return View(database.Products.Where(s => s.NamePro.Contains(_name)).ToList());
+
+  
         }
         
 
